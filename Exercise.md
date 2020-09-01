@@ -1,8 +1,8 @@
 Link to database https://sqlzoo.net/wiki/Help_Desk
 
- 1. There are three issues that include the words "index" and "Oracle". Find the call_date for each of them
+ # 1. There are three issues that include the words "index" and "Oracle". Find the call_date for each of them
 
-
+```SQL
 SELECT 
     SUBSTR(call_date, 1, 24) AS call_date, call_ref
 FROM
@@ -11,7 +11,7 @@ WHERE
     detail LIKE '%index%'
         AND detail LIKE '%oracle%';
         
-
+```
 2. Samantha Hall made three calls on 2017-08-14. Show the date and time for each
 
 
