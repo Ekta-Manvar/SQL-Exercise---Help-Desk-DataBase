@@ -177,8 +177,8 @@ WHERE
                 JOIN
             Issue i ON cl.caller_id = i.caller_id
         WHERE
-            DATE_FORMAT(i.call_date, '%H:%i') BETWEEN '13:54' AND '14:01'
-                OR DATE_FORMAT(i.call_date, '%H:%i') BETWEEN '19:54' AND '20:01')
+            DATE_FORMAT(i.call_date, '%H:%i') BETWEEN '13:55' AND '14:00'
+                OR DATE_FORMAT(i.call_date, '%H:%i') BETWEEN '19:55' AND '20:00')
 GROUP BY company_name
 ORDER BY COUNT(*) DESC
 LIMIT 1
