@@ -1,12 +1,12 @@
 SQLZOO HelpDesk_DataBase. Below is the link to database
 
-https://sqlzoo.net/wiki/Help_Desk 
+<a href=''>https://sqlzoo.net/wiki/Help_Desk </a>
 
 
 
-#### 1. There are three issues that include the words "index" and "Oracle". Find the call_date for each of them
+#1. There are three issues that include the words "index" and "Oracle". Find the call_date for each of them
 
-```SQL
+
 SELECT 
     call_date, call_ref
 FROM
@@ -15,11 +15,11 @@ WHERE
     detail LIKE '%index%'
         AND detail LIKE '%oracle%';
         
-```
 
-#### 2. Samantha Hall made three calls on 2017-08-14. Show the date and time for each
 
-``` SQL
+#2. Samantha Hall made three calls on 2017-08-14. Show the date and time for each
+
+
 SELECT 
      call_date, first_name, last_name
 FROM
@@ -30,20 +30,21 @@ WHERE
     first_name = 'Samantha'
         AND last_name = 'Hall'
         AND DATE(call_date) = '2017-08-14';
-```
 
-#### 3.There are 500 calls in the system (roughly). Write a query that shows the number that have each status
-``` SQL
+
+
+/* 3. There are 500 calls in the system (roughly). Write a query that shows the number that have each status*/
+
 SELECT 
     status, COUNT(caller_id) AS Volume
 FROM
     Issue 
 GROUP BY status;
  
-```
 
-#### 4. Calls are not normally assigned to a manager but it does happen. How many calls have been assigned to staff who are at Manager Level?
-``` SQL
+
+/* 4. Calls are not normally assigned to a manager but it does happen. How many calls have been assigned to staff who are at Manager Level?*/
+
  SELECT 
     COUNT(i.caller_id) AS mlcc
 FROM
@@ -55,10 +56,12 @@ FROM
 WHERE
     l.manager = 'Y'
 GROUP BY l.manager;
-```
-#### 5.Show the manager for each shift. Your output should include the shift date and type; also the first and last name of the manager.
 
-``` SQL
+
+
+
+/* 5.Show the manager for each shift. Your output should include the shift date and type; also the first and last name of the manager.*/
+
  SELECT 
     sf.shift_date,
     sf.shift_type,
@@ -71,8 +74,8 @@ FROM
 ORDER BY sf.shift_date;
 ```
 
-#### 6.List the Company name and the number of calls for those companies with more than 18 calls.
-``` SQL
+/* 6.List the Company name and the number of calls for those companies with more than 18 calls.*/
+
 SELECT 
     c.company_name, COUNT(i.caller_id) AS cc
 FROM
@@ -83,9 +86,11 @@ FROM
     Issue i ON cl.caller_id = i.caller_id
 GROUP BY c.company_name
 HAVING COUNT(i.caller_id) > 18
-```
-#### 7.Find the callers who have never made a call. Show first name and last name
-``` SQL
+
+
+/* 7.Find the callers who have never made a call. Show first name and last name*/
+
+
 SELECT 
     c.first_name, c.last_name
 FROM
@@ -94,11 +99,14 @@ FROM
     Issue i ON c.caller_id = i.caller_id
 WHERE
     i.caller_id IS NULL;
-```
+    
+    
 
-#### 8.For each shift show the number of staff assigned. Beware that some roles may be NULL and that the same person might have been assigned to multiple roles (The roles are 'Manager', 'Operator', 'Engineer1', 'Engineer2').
+/* 8.For each shift show the number of staff assigned. 
+Beware that some roles may be NULL and 
+that the same person might have been assigned to multiple roles (The roles are 'Manager', 'Operator', 'Engineer1', 'Engineer2').*/
 
-``` SQL
+
 SELECT 
     f.shift_date, f.shift_type, COUNT(DISTINCT role) AS cw
 FROM
@@ -116,10 +124,14 @@ FROM
     FROM
         Shift) AS f
 GROUP BY f.shift_date , f.shift_type;
-```
-#### 9.Caller 'Harry' claims that the operator who took his most recent call was abusive and insulting. Find out who took the call (full name) and when.
-##### 1st way
-``` SQL
+
+
+
+/* 9.Caller 'Harry' claims that the operator who took his most recent call was abusive and insulting. Find out who took the call (full name) and when. */
+
+
+#1st way
+
 SELECT 
     i.call_date, s.first_name, s.last_name
 FROM
@@ -132,9 +144,12 @@ WHERE
     c.first_name = 'Harry'
 ORDER BY i.call_date DESC
 LIMIT 1;
-```
-##### 2nd way 
-```SQL
+
+
+
+#2nd way 
+
+
 SELECT 
     i.call_date, s.first_name, s.last_name
 FROM
@@ -153,12 +168,12 @@ FROM
                 first_name = 'Harry')) AS i ON i.taken_by = s.staff_code
 ORDER BY i.call_date DESC
 LIMIT 1;
-```
+                        
+                        
 
-#### 10. Annoying customers. Customers who call in the last five minutes of a shift are annoying. Find the most active customer who has never been annoying.
+/* 10. Annoying customers. Customers who call in the last five minutes of a shift are annoying. Find the most active customer who has never been annoying.*/
 
 
-``` SQL
 SELECT 
     c.company_name, COUNT(*) AS abna
 FROM
@@ -183,7 +198,7 @@ GROUP BY company_name
 ORDER BY COUNT(*) DESC
 LIMIT 1
 ;
-```
+
 
 
 
