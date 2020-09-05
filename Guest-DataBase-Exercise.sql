@@ -69,7 +69,7 @@ WHERE
 GROUP BY g.id;
 
 
-#6. Ruth Cadbury. Show the total amount payable by guest Ruth Cadbury for her room bookings. You should JOIN to the rate table using room_type_requested and occupants.
+#6. Ruth Cadbury. Show the total amount payable by guest Ruth Cadbury for her room bookings. 
 
 SELECT 
     SUM(r.amount * b.nights) AS Total_Amount
