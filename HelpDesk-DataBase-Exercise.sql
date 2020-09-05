@@ -41,7 +41,7 @@ GROUP BY status;
  
 
 
-/* 4. Calls are not normally assigned to a manager but it does happen. How many calls have been assigned to staff who are at Manager Level?*/
+#4. Calls are not normally assigned to a manager but it does happen. How many calls have been assigned to staff who are at Manager Level?
 
  SELECT 
     COUNT(i.caller_id) AS mlcc
@@ -58,7 +58,7 @@ GROUP BY l.manager;
 
 
 
-/* 5.Show the manager for each shift. Your output should include the shift date and type; also the first and last name of the manager.*/
+#5.Show the manager for each shift. Your output should include the shift date and type; also the first and last name of the manager.
 
  SELECT 
     sf.shift_date,
@@ -72,7 +72,7 @@ FROM
 ORDER BY sf.shift_date;
 ```
 
-/* 6.List the Company name and the number of calls for those companies with more than 18 calls.*/
+#6.List the Company name and the number of calls for those companies with more than 18 calls.
 
 SELECT 
     c.company_name, COUNT(i.caller_id) AS cc
@@ -86,7 +86,7 @@ GROUP BY c.company_name
 HAVING COUNT(i.caller_id) > 18
 
 
-/* 7.Find the callers who have never made a call. Show first name and last name*/
+#7.Find the callers who have never made a call. Show first name and last name
 
 
 SELECT 
@@ -100,9 +100,9 @@ WHERE
     
     
 
-/* 8.For each shift show the number of staff assigned. 
-Beware that some roles may be NULL and 
-that the same person might have been assigned to multiple roles (The roles are 'Manager', 'Operator', 'Engineer1', 'Engineer2').*/
+#8.For each shift show the number of staff assigned. 
+#Beware that some roles may be NULL and 
+#that the same person might have been assigned to multiple roles (The roles are 'Manager', 'Operator', 'Engineer1', 'Engineer2').
 
 
 SELECT 
@@ -125,7 +125,7 @@ GROUP BY f.shift_date , f.shift_type;
 
 
 
-/* 9.Caller 'Harry' claims that the operator who took his most recent call was abusive and insulting. Find out who took the call (full name) and when. */
+#9.Caller 'Harry' claims that the operator who took his most recent call was abusive and insulting. Find out who took the call (full name) and when. 
 
 
 #1st way
@@ -169,7 +169,7 @@ LIMIT 1;
                         
                         
 
-/* 10. Annoying customers. Customers who call in the last five minutes of a shift are annoying. Find the most active customer who has never been annoying.*/
+#10. Annoying customers. Customers who call in the last five minutes of a shift are annoying. Find the most active customer who has never been annoying.
 
 
 SELECT 
