@@ -70,7 +70,7 @@ FROM
         JOIN
     Staff st ON sf.manager = st.staff_code
 ORDER BY sf.shift_date;
-```
+
 
 #6.List the Company name and the number of calls for those companies with more than 18 calls.
 
