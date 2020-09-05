@@ -10,6 +10,7 @@ WHERE
     id = 'co42010.L01';
 
 
+
 #2.  For each event in module co72010 show the day, the time and the place.
 
 SELECT 
@@ -35,6 +36,7 @@ WHERE
     e.modle = 'co72010';
     
 
+
 #4.  Give a list of the staff and module number associated with events using room cr.132 on Wednesday, include the time each event starts.
 
   SELECT 
@@ -48,6 +50,7 @@ FROM
 WHERE
     e.room = 'cr.132'
         AND e.dow = 'Wednesday';
+
 
 
 
@@ -65,6 +68,8 @@ FROM
     student s ON a.student = s.id
 WHERE
     m.name LIKE '%database%';
+
+
 
 
 #6. Show the 'size' of each of the co72010 events. Size is the total number of students attending each event.
@@ -85,6 +90,9 @@ FROM
 GROUP BY event
 ORDER BY event;
 
+
+
+
 #7. For each post-graduate module, show the size of the teaching team. (post graduate modules start with the code co7).
 SELECT 
     COUNT(DISTINCT t.staff) AS staff, e.modle
@@ -98,6 +106,8 @@ FROM
         LEFT JOIN
     teaches t ON e.id = t.event
 GROUP BY modle;
+
+
 
 #8. Give the full name of those modules which include events taught for fewer than 10 weeks.
 SELECT DISTINCT
@@ -114,6 +124,8 @@ FROM
         LEFT JOIN
     modle m ON m.id = e.modle;
 
+
+
 #9. Identify those events which start at the same time as one of the co72010 lectures.
 
 SELECT 
@@ -127,7 +139,9 @@ WHERE
             event
         WHERE
             modle = 'co72010');
-            
+   
+   
+   
 #10. How many members of staff have contact time which is greater than the average?
 
 SELECT 
